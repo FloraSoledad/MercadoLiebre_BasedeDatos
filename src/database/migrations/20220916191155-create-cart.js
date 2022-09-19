@@ -9,17 +9,36 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       orderID: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        references: {
+          model: {
+            tableName: 'Orders'
+          },
+          key :'id'
+        }
       },
       productID: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        references: {
+          model: {
+            tableName: 'Products'
+          },
+          key :'id'
+        }
       },
+      /* Cuando se crea el registro createdAt*/
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE
       },
+      /* Cuando el registro sufre actualizaciones updateAt */
       updatedAt: {
-        allowNull: false,
+        allowNull: true,
+        type: Sequelize.DATE
+      },
+      /* Cuando el registro es borrado deledAt */
+      deletedAt: {
+        allowNull: true,
         type: Sequelize.DATE
       }
     });
